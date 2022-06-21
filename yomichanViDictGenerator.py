@@ -31,7 +31,6 @@ def modifyKanjiDict(dict):
     cursor= connectDb.cursor()
     for entry in dict:
         kanjiChar = entry[0]
-        #print(kanjiChar)
         query = cursor.execute('SELECT field3 || " " || field4 FROM kanji where field1=?', (kanjiChar,))
         result = query.fetchall()
         if len(result) < 1:
@@ -45,7 +44,7 @@ def modifyDict(dict):
     cursor= connectDb.cursor()
     for entry in dict:
         word = entry[0]
-        #print(kanjiChar)
+        print(word)
         queryHanviet = cursor.execute('SELECT field2 || " " || field3 FROM hanviet where field1=?', (word,))
         resultHanviet = queryHanviet.fetchall()
         queryMeaning = cursor.execute('SELECT field2 FROM meaning where field1=?', (word,))
